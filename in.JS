@@ -22,16 +22,18 @@
 doneButton.addEventListener('click', () =>{
         //変数doneButtonに対してクリックイベントが発生したときに設定した打消し線が表示されるように指示します。
         //この設定で完了ボタンから一番近いli要素を見つけてきて、Cssのスタイルがつきます。
+
     const li = doneButton.closest('li');
     li.classList.add('yokosen');
 
-         //完了したタスクの削除をするボタンを追加する。オリジナル作業順２
+         //完了したタスクの削除をするボタンを追加する。オリジナル作業順２ ボタンクリック後削除。
          const cancellation_button = document.createElement('button');
          cancellation_button.innerText='削除';
          li.appendChild(cancellation_button);
-
+         cancellation_button.addEventListener('click',() =>{
+            li.remove('')
+         });
  });
-
 
  //未完了ボタンの追加とその処理（CSSの打ち消し。）オリジナル！作業順１
 

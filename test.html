@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスクリスト</title>
+    <style>
+        .yokosen {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="yarukoto" placeholder="やること">
+    <button id="touroku">登録</button>
+    <ol></ol>
+
+    <script>
+        const button = document.getElementById('touroku');
+
+        button.addEventListener('click', () => {
+            const input = document.getElementById('yarukoto');
+            const li = document.createElement('li');
+            li.innerText = input.value;
+
+            const doneButton = document.createElement('button');
+            doneButton.innerText = '完了';
+            li.appendChild(doneButton);
+
+            doneButton.addEventListener('click', () => {
+                const li = doneButton.closest('li');
+                li.classList.add('yokosen');
+
+                const cancellation_button = document.createElement('button');
+                cancellation_button.innerText = '削除';
+                li.appendChild(cancellation_button);
+
+                cancellation_button.addEventListener('click', () => {
+                    li.remove();
+                });
+            });
+
+            const incomplete_button = document.createElement('button');
+            incomplete_button.innerText = '未完了';
+            li.appendChild(incomplete_button);
+
+            incomplete_button.addEventListener('click', () => {
+                li.classList.remove('yokosen');
+            });
+
+            const ol = document.querySelector('ol');
+            ol.appendChild(li);
+        });
+    </script>
+</body>
+</html>
+
+</body>
+</html>
